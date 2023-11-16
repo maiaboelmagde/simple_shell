@@ -19,6 +19,7 @@ char *_atoi(int n)
 {
 	char buffer[20];
 	int i = 0;
+
 	if (n == 0)
 		buffer[i++] = '0';
 	else
@@ -48,5 +49,4 @@ void revString(char *str, int length)
 		start++;
 		end--;
 	}
-	
 }

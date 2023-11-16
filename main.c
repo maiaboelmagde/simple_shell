@@ -11,9 +11,7 @@ int main(int ac, char **argv, char **env)
 	char **command = NULL;
 	int status = 0, index = 0;
 	(void) ac;
-	
-
-	while(1)
+	while (1)
 	{
 		line = readLine();
 		if (line == NULL) /* EOF or ctr + d handling */

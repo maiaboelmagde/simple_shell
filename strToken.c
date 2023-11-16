@@ -27,7 +27,7 @@ char **strToken(char *line)
 	if (!command)
 	{
 		free(line), line = NULL;
-		return NULL;
+		return (NULL);
 	}
 
 	token = strtok(line, DELIMITERS);
@@ -37,7 +37,7 @@ char **strToken(char *line)
 		token = strtok(NULL, DELIMITERS);
 		i++;
 	}
-	free(line), line= NULL;
-	command[i]= NULL;
+	free(line), line = NULL;
+	command[i] = NULL;
 	return (command);
 }

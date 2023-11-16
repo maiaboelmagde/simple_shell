@@ -2,7 +2,8 @@
 void freeArr(char **arr)
 {
 	int i;
-	if(!arr)
+
+	if (!arr)
 		return;
 
 	for (i = 0; arr[i]; i++)
@@ -10,7 +11,6 @@ void freeArr(char **arr)
 		free(arr[i]);
 		arr[i] = NULL;
 	}
-	
 	free(arr), arr = NULL;
 }
 
@@ -24,7 +24,7 @@ int _execute(char **command, char **argv, char **environment, int index)
 	commandLine = _getpath(command[0]);
 	if	(!commandLine)
 	{
-		_perror(argv[0],command[0], index);
+		_perror(argv[0], command[0], index);
 		freeArr(command);
 		return (127);
 	}
@@ -43,7 +43,7 @@ int _execute(char **command, char **argv, char **environment, int index)
 	   freeArr(command);
 	   free(commandLine), commandLine = NULL;
 	}
-	return(WEXITSTATUS(status));
+	return (WEXITSTATUS(status));
 }
 
 char *_getenv(char *name)
@@ -83,17 +83,16 @@ char *_getpath(char *commandLine)
 				return (_strdup(commandLine));
 
 			return (NULL);
-			}			
+			}
 		}
 	}
 	if (!_getenv("PATH"))
 		return (NULL);
-	
 	directory = strtok(_getenv("PATH"), ":");
 	while (directory)
 	{
 		command = malloc(_strlen(directory) * _strlen(commandLine));
-		if(command)
+		if (command)
 		{
 			_strcpy(command, directory);
 			_strcat(command, "/");
@@ -104,5 +103,5 @@ char *_getpath(char *commandLine)
 		free(command), command = NULL;
 		directory = strtok(NULL, ":");
 	}
-	return (NULL);	
+	return (NULL);
 }

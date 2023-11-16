@@ -8,8 +8,8 @@ char *readLine(void)
 
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "$ ", 2);
-	numberReturned= getline(&line, &lenght, stdin);
-	if ( numberReturned == -1)
+	numberReturned = getline(&line, &lenght, stdin);
+	if (numberReturned == -1)
 	{
 		free(line);
 		return (NULL);
