@@ -1,31 +1,50 @@
 #include "shell.h"
 /**
- * main - Simple Shell main function
- * @ac: Arguments counter
- * @argv: Arguments vector
- * Return: 0 (success)
-*/
-int main(int ac, char **argv, char **env)
+ * main - main function.
+ * @ac: argumnents counter.
+ * @argv: Arguments.
+ * Return: the status of last execute.
+ */
+int main(int ac, char **argv, char ** environment)
 {
-	char *line = NULL;
-	char **command = NULL;
-	int status = 0, index = 0;
-	(void) ac;
-	while (1)
+	int status = 0, index = 0, i = 0;
+	char *line = NULL, *env = NULL;
+	char **commandLine = NULL;
+	int j = 1;
+	fileIN file;
+
+	if (ac == 2)
 	{
-		line = readLine();
-		if (line == NULL) /* EOF or ctr + d handling */
+		file = get_file_input(argv);
+		j = file.len;
+	}
+	while (j)
+	{
+		if (ac == 2)
+		{
+			j--;
+			line = file.lines[i++];
+		}
+		else
+			line = getLine();
+		if (line == NULL)
 		{
 			if (isatty(STDIN_FILENO))
-				write(STDOUT_FILENO, "\n", 1); /*new line after EOF*/
+				write(STDOUT_FILENO, "\n", 1);
+			free(env);
 			return (status);
 		}
-
 		index++;
-		command = strToken(line);
-		if (!command)
+		commandLine = splitLine(line);
+		comments_handler(&commandLine);
+		if (!commandLine)
 			continue;
+		replace_variable(commandLine, status);
 
-			status = _execute(command, argv, env, index);
+		if (is_builtin(commandLine[0]))
+			handle_builtin(commandLine, argv, &status, index, &env);
+		else
+			status = _execute(commandLine, argv, index, environment);
 	}
+	return (0);
 }

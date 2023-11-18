@@ -1,98 +1,105 @@
 #include "shell.h"
 
 /**
- * _strlen - returns the length of a string.
- * @s: char pointer
- * Return: the length of *s
+ * _strdup - a function that duplicate a string
+ * @str: a string given.
+ * Return: a pointer to a new string which is a duplicate of the
+ * string.
  */
-int _strlen(char *s)
+char *_strdup(const char *str)
 {
-	int length;
-
-	length = 0;
-	if (s[0] == '\0')
-		return (0);
-
-	while (s[length] != '\0')
-	{
-		length++;
-	}
-	return (length);
-}
-
-/**
- * _strcmp - compares too strings
- * @s1: first string
- * @s2: sec string
- * Return: 0
- */
-int _strcmp(char *s1, char *s2)
-{
-	int i;
-
-	for (i = 0; ((s1[i] != '\0') || (s2[i] != '\0')); i++)
-	{
-		if (s1[i] - s2[i] != 0)
-			return (s1[i] - s2[i]);
-	}
-	return (0);
-}
-
-/**
- * _strdup - creates an array of chars
- * @str: array size
- * Return: array refrance or NULL
- */
-char *_strdup(char *str)
-{
-	int length;
-	char *arr;
+	char *ptr;
+	int i, len = 0;
 
 	if (str == NULL)
 		return (NULL);
-	length = _strlen(str);
-	arr = malloc((sizeof(char) * length) + 1);
-	if (arr == NULL)
+
+	while (str[len])
+		len++;
+
+	ptr = malloc(sizeof(char) * (len + 1));
+	if (ptr == NULL)
 		return (NULL);
-	arr[length] = '\0';
-	while (length--)
-		arr[length] = str[length];
-	return (arr);
+	for (i = 0; i <= len; i++)
+		ptr[i] = str[i];
+	return (ptr);
 }
 
 /**
- * _strcpy - copies the string pointed
- * @destination: char pointer
- * @source: char pointer
- * Return: char pinter
- */
-char *_strcpy(char *destination, char *source)
+  * _strcmp - a function that compares two strings
+  * @s1: a pointer to the first string
+  * @s2: a pointer to the second string
+  * Return: integer
+  */
+int _strcmp(char *s1, char *s2)
 {
-	int i;
+	int cmp;
 
-	for (i = 0; source[i] != '\0'; i++)
+	cmp = (int)*s1 - (int)*s2;
+	while (*s1)
 	{
-		destination[i] = source[i];
+		if (*s1 != *s2)
+			break;
+		s1++;
+		s2++;
+		cmp = (int)*s1 - (int)*s2;
 	}
-	destination[i] = '\0';
-	return (destination);
+	return (cmp);
 }
 
 /**
- * _strcat - concatenates two strings
- * @destination: char pointer left side
- * @source: char pointer right side
- * Return: the length *s
- */
-char *_strcat(char *destination, char *source)
+  * _strlen - a function that returns the length of a string
+  * @s: a pointer to a string
+  * Return: the lenght of the string
+  */
+int _strlen(char *s)
 {
-	int length, i;
+	int len = 0;
 
-	length = _strlen(destination);
-	for (i = 0; source[i] != '\0'; i++)
+	while (s[len])
+		len++;
+	return (len);
+}
+
+/**
+  * _strcat - a function that concatenates two strings
+  * @src: a pointer to source string
+  * @dest: a pointer to dest string
+  * Return: the src string appending to the dest string
+  */
+char *_strcat(char *dest, char *src)
+{
+	char *p = dest;
+
+	while (*p)
+		p++;
+
+	while (*src)
 	{
-		destination[length + i] = source[i];
+		*p = *src;
+		p++;
+		src++;
 	}
-	destination[length + i] = '\0';
-	return (destination);
+	*p = '\0';
+	return (dest);
+}
+
+/**
+ *_strcpy - copies the string pointed to by src
+ *@dest: A pointer to a char that will be changed
+ *@src: A pointer to a char that will be changed
+ *Return: dest
+ */
+
+char *_strcpy(char *dest, char *src)
+{
+	int i = 0;
+
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
