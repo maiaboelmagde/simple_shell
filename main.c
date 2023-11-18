@@ -3,9 +3,10 @@
  * main - main function.
  * @ac: argumnents counter.
  * @argv: Arguments.
+ * @environment: env
  * Return: the status of last execute.
  */
-int main(int ac, char **argv, char ** environment)
+int main(int ac, char **argv, char **environment)
 {
 	int status = 0, index = 0, i = 0;
 	char *line = NULL, *env = NULL;

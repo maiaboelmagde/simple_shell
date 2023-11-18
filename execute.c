@@ -5,6 +5,7 @@
  * @command: the command to execute.
  * @argv: arguments.
  * @idx: command index.
+ * @environment: env
  * Return: the exit status of child processe
  * or 127 if the command does not exist.
 */
