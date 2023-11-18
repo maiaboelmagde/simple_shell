@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * _strdup - a function that duplicate a string
  * @str: a string given.
@@ -46,7 +45,6 @@ int _strcmp(char *s1, char *s2)
 	}
 	return (cmp);
 }
-
 /**
   * _strlen - a function that returns the length of a string
   * @s: a pointer to a string
@@ -60,7 +58,6 @@ int _strlen(char *s)
 		len++;
 	return (len);
 }
-
 /**
   * _strcat - a function that concatenates two strings
   * @src: a pointer to source string
@@ -83,14 +80,12 @@ char *_strcat(char *dest, char *src)
 	*p = '\0';
 	return (dest);
 }
-
 /**
  *_strcpy - copies the string pointed to by src
  *@dest: A pointer to a char that will be changed
  *@src: A pointer to a char that will be changed
  *Return: dest
  */
-
 char *_strcpy(char *dest, char *src)
 {
 	int i = 0;

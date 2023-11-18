@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * is_builtin - check if a command is builtin.
  * @command: the command to check.
@@ -21,7 +20,6 @@ int is_builtin(char *command)
 	}
 	return (0);
 }
-
 /**
  * handle_builtin - handle builtin.
  * @command: the builtin command.
@@ -91,7 +89,6 @@ char **new_env)
 	free2Darray(command), free((*new_env));
 	exit(exit_status);
 }
-
 /**
  * print_env - print environement variables
  * @command: the builtin command.

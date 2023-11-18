@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * getEnv - a function that gets an environment variable.
  * @variable: the variable name.
@@ -47,7 +46,6 @@ list_path *buildDirList(void)
 	free(path_env);
 	return (head);
 }
-
 /**
  * getPath - a function that handle the path of a command.
  * @command: the command to handle.

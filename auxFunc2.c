@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * is_positive_number - check if a string is positive number.
  * @str: the string to check.
@@ -19,7 +18,6 @@ int is_positive_number(char *str)
 	}
 	return (1);
 }
-
 /**
  * _atoi - convert a string to an integer.
  * @str: the string.
@@ -36,7 +34,6 @@ int _atoi(char *str)
 	}
 	return (num);
 }
-
 /**
  * reverse_string - a function that reverse string.
  * @str: string to reverse.
@@ -58,7 +55,6 @@ void reverse_string(char *str, int len)
 		end--;
 	}
 }
-
 /**
  * _itoa - convert an integer to string.
  * @n: the integer.

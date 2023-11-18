@@ -40,7 +40,6 @@ void print_error(char *name, int idx, char *cmd)
 	write(STDERR_FILENO, mssg, _strlen(mssg));
 	free(index);
 }
-
 /**
  * print_cd_error - a function that prints can't cd error.
  * @name: shell name.
@@ -62,7 +61,6 @@ void print_cd_error(char *name, int idx, char *path)
 
 	free(index);
 }
-
 /**
  * set_wd_env - set environment for PWD and OLDPWD.
  * @env_key: environment key.

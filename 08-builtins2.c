@@ -90,7 +90,6 @@ char **new_env)
 	(*status) = 0;
 	free2Darray(command);
 }
-
 /**
  * change_directory - change directory to given path.
  * @command: the builtin command.
